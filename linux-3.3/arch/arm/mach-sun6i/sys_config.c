@@ -373,7 +373,7 @@ static int parser_atoi(const char *p)
     return i;
 }
 
-static int parser_smdt_param(const char *s, script_item_u *value)
+static int parser_smdt_param(const char *s, script_item_u *value)//读取u-boot env 
 {
     char arr[8] = {0};
     char *p=NULL;
@@ -445,7 +445,7 @@ script_get_item(char *main_key, char *sub_key, script_item_u *item)
                     *item = *subkey->value;
                     /* add by cjcheng for display_param start ...*/
                     if (0 == smdt_param){
-                        if (0 == parser_smdt_param(subkey->name, item))
+                        if (0 == parser_smdt_param(subkey->name, item))//读取u-boot env 
                             printk("cjcheng ++++ update sub_key: old %s = %d, new %s = %d \n", subkey->name, *subkey->value, subkey->name, *item);
                     }
                     /* add by cjcheng for display_param end ...*/
