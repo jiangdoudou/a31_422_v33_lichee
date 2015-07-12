@@ -64,7 +64,7 @@ int parser_hextoi(const char *p)
 	return ret;
 }
 
-void check_smdt_param(char *p)
+void check_smdt_param(char *p)  //by jiangdou
 {
 	char tmp[1024];
 	char *s = p;
@@ -97,7 +97,7 @@ int update_env(void)
             printf("can not find sd card\n");
             return 1;
         }
-        sprintf(str, "fatload mmc 0:0 0x%x %s", smdt_param, "/display_param.cfg");
+        sprintf(str, "fatload mmc 0:0 0x%x %s", smdt_param, "/display_param.cfg");//读取SD卡“display_param.cfg”
         if (run_command(str, 0)){
             sprintf(str, "fatload mmc 0:1 0x%x %s", smdt_param, "/display_param.cfg");
             if (run_command(str, 0)){
@@ -132,7 +132,7 @@ int update_env(void)
 			return 1;
 		}else{
 			printf("smdt_param change\n");
-			setenv("smdt_param", smdt_param);
+			setenv("smdt_param", smdt_param);//保存env
 			saveenv();
 		}
 	}
